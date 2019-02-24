@@ -20,13 +20,14 @@ source:
     - fix_math_library.diff
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and py27]
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}  # [not osx]
+    - {{ compiler('cxx') }}   # [not osx]
+    - clangdev  # [osx]
     - cmake
     - make  # [unix]
     - swig
