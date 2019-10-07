@@ -1,6 +1,6 @@
 {% set name = "openbabel" %}
-{% set version = "2.4.1" %}
-{% set sha256 = "594c7f8a83f3502381469d643f7b185882da1dd4bc2280c16502ef980af2a776" %}
+{% set version = "3.0.0" %}
+{% set sha256 = "5c630c4145abae9bb4ab6c56a940985acb6dadf3a8c3a8073d750512c0220f30" %}
 
 package:
   name: {{ name|lower }}
@@ -15,13 +15,10 @@ source:
     - fix_library_path_search.diff
     - fix_data_path.diff
     - fix_babel_test_paths.diff
-    - fix_python_3.6.diff  # [py3k]
-    - python_link.diff
-    - fix_math_library.diff
 
 build:
-  number: 1
-  skip: true  # [win and py27]
+  number: 0
+  skip: true  # [win]
 
 requirements:
   build:
@@ -38,6 +35,7 @@ requirements:
     - bzip2
     - libxml2
     - cairo
+    - boost  # [win]
   run:
     - python
     - zlib
@@ -46,8 +44,8 @@ requirements:
 
 test:
   imports:
-    - openbabel
-    - pybel
+    - openbabel.openbabel
+    - openbabel.pybel
   commands:
     - obabel --help
     - obabel -:c1ccccc1 --gen3d -omol2

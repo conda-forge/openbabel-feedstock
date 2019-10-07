@@ -2,16 +2,12 @@ MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 bzip2:
 - '1'
-c_compiler:
-- clang
 cairo:
 - '1.16'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-cxx_compiler:
-- clangxx
 libxml2:
 - '2.9'
 macos_machine:
