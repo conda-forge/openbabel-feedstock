@@ -17,8 +17,8 @@ source:
     - fix_babel_test_paths.diff
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
+  skip: true  # [win and py27]
 
 requirements:
   build:
@@ -35,7 +35,6 @@ requirements:
     - bzip2
     - libxml2
     - cairo
-    - boost  # [win]
   run:
     - python
     - zlib

@@ -1,5 +1,5 @@
 cmake ^
-      -G "NMake Makefiles" ^
+      -G "%CMAKE_GENERATOR%" ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
       -DWITH_INCHI=ON ^
