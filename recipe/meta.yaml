@@ -43,8 +43,8 @@ requirements:
 
 test:
   imports:
-    - openbabel
-    - pybel
+    - openbabel.openbabel
+    - openbabel.pybel
   commands:
     - obabel --help
     - obabel -:c1ccccc1 --gen3d -omol2
