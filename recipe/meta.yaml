@@ -35,6 +35,7 @@ requirements:
     - bzip2
     - libxml2
     - cairo
+    - boost  # [win]
   run:
     - python
     - zlib
