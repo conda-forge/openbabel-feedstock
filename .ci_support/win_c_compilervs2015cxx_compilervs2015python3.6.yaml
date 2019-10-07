@@ -1,3 +1,5 @@
+CMAKE_GENERATOR:
+- NMake Makefiles
 bzip2:
 - '1'
 c_compiler:
