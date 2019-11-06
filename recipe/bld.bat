@@ -13,8 +13,10 @@ cmake ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DWITH_MAEPARSER=OFF ^
       .
+if errorlevel 1 exit 1
 
 cmake --build . --target install --config Release
+if errorlevel 1 exit 1
 
 echo d|xcopy %LIBRARY_PREFIX%\bin\data %PREFIX%\share\openbabel /e /c
 rmdir /s /q %LIBRARY_PREFIX%\bin\data
