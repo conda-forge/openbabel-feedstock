@@ -37,9 +37,6 @@ requirements:
     - rapidjson
   run:
     - python
-    - zlib
-    - libxml2
-    - cairo
 
 test:
   imports:
