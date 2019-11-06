@@ -32,7 +32,6 @@ requirements:
     - python
     - zlib
     - eigen
-    - bzip2
     - libxml2
     - cairo
   run:
