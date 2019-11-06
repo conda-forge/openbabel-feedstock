@@ -34,6 +34,7 @@ requirements:
     - eigen
     - libxml2
     - cairo
+    - rapidjson
   run:
     - python
     - zlib
