@@ -11,6 +11,7 @@ cmake ^
       -DPYTHON_BINDINGS=ON ^
       -DRUN_SWIG=ON ^
       -DCMAKE_BUILD_TYPE=Release ^
+      -DWITH_MAEPARSER=OFF ^
       .
 
 cmake --build . --target install --config Release
