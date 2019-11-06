@@ -23,9 +23,8 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}  # [not osx]
-    - {{ compiler('cxx') }}   # [not osx]
-    - clangdev  # [osx]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
     - make  # [unix]
     - swig
