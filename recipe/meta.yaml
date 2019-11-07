@@ -7,24 +7,22 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/openbabel/openbabel/archive/openbabel-{{ version|replace('.','-') }}.tar.gz
   sha256: {{ sha256 }}
-
   patches:
     - fix_library_path_search.diff
     - fix_data_path.diff
     - fix_babel_test_paths.diff
+    - fix_backinserter.diff
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
-    - {{ compiler('c') }}  # [not osx]
-    - {{ compiler('cxx') }}   # [not osx]
-    - clangdev  # [osx]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
     - make  # [unix]
     - swig
@@ -32,15 +30,11 @@ requirements:
     - python
     - zlib
     - eigen
-    - bzip2
     - libxml2
     - cairo
-    - boost  # [win]
+    - rapidjson
   run:
     - python
-    - zlib
-    - libxml2
-    - cairo
 
 test:
   imports:
@@ -71,3 +65,4 @@ extra:
     - njzjz
     - mcs07
     - mwojcikowski
+    - fredrikw
