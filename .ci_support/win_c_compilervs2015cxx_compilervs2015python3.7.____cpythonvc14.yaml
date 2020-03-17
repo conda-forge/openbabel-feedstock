@@ -23,13 +23,13 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 python:
-- '3.6'
+- 3.7.* *_cpython
 vc:
 - '14'
 zip_keys:
-- - python
-  - vc
-  - c_compiler
+- - c_compiler
   - cxx_compiler
+  - python
+  - vc
 zlib:
 - '1.2'
