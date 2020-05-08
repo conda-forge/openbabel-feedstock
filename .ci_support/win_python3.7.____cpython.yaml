@@ -1,5 +1,5 @@
 c_compiler:
-- vs2015
+- vs2017
 cairo:
 - '1.16'
 channel_sources:
@@ -7,7 +7,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2015
+- vs2017
 libxml2:
 - '2.9'
 pin_run_as_build:
@@ -18,18 +18,11 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
-  vc:
-    max_pin: x
   zlib:
     max_pin: x.x
 python:
-- '3.7'
+- 3.7.* *_cpython
 vc:
 - '14'
-zip_keys:
-- - python
-  - vc
-  - c_compiler
-  - cxx_compiler
 zlib:
 - '1.2'
