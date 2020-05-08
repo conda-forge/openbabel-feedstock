@@ -3,7 +3,7 @@ About openbabel
 
 Home: http://openbabel.org/
 
-Package license: GPLv2
+Package license: GPL-2.0-only
 
 Feedstock license: BSD 3-Clause
 
