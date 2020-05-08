@@ -1,6 +1,6 @@
 {% set name = "openbabel" %}
-{% set version = "3.0.0" %}
-{% set sha256 = "5c630c4145abae9bb4ab6c56a940985acb6dadf3a8c3a8073d750512c0220f30" %}
+{% set version = "3.1.1" %}
+{% set sha256 = "c97023ac6300d26176c97d4ef39957f06e68848d64f1a04b0b284ccff2744f02" %}
 
 package:
   name: {{ name|lower }}
@@ -16,7 +16,7 @@ source:
     - fix_backinserter.diff
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win and vc<14]
 
 requirements:
@@ -47,18 +47,18 @@ test:
     - obabel -:c1ccccc1 -opng -O img.png
 
 about:
-    home: http://openbabel.org/
-    license: GPLv2
-    license_family: GPL
-    license_file: COPYING
-    summary: "A chemical toolbox designed to speak the many languages of chemical data"
-    description: |
-      Open Babel is a chemical toolbox designed to speak the many languages of chemical
-      data. It's an open, collaborative project allowing anyone to search, convert,
-      analyze, or store data from molecular modeling, chemistry, solid-state materials,
-      biochemistry, or related areas.
-    doc_url: http://openbabel.org/
-    dev_url: https://github.com/openbabel/openbabel
+  home: http://openbabel.org/
+  license: GPLv2
+  license_family: GPL
+  license_file: COPYING
+  summary: A chemical toolbox designed to speak the many languages of chemical data
+  description: |
+    Open Babel is a chemical toolbox designed to speak the many languages of chemical
+    data. It's an open, collaborative project allowing anyone to search, convert,
+    analyze, or store data from molecular modeling, chemistry, solid-state materials,
+    biochemistry, or related areas.
+  doc_url: http://openbabel.org/
+  dev_url: https://github.com/openbabel/openbabel
 
 extra:
   recipe-maintainers:
