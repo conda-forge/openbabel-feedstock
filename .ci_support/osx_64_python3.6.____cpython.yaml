@@ -1,5 +1,9 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 c_compiler:
-- vs2017
+- clang
+c_compiler_version:
+- '10'
 cairo:
 - '1.16'
 channel_sources:
@@ -7,9 +11,15 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- clangxx
+cxx_compiler_version:
+- '10'
 libxml2:
 - '2.9'
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
 pin_run_as_build:
   cairo:
     max_pin: x.x
@@ -21,8 +31,8 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 python:
-- 3.8.* *_cpython
-vc:
-- '14'
+- 3.6.* *_cpython
+target_platform:
+- osx-64
 zlib:
 - '1.2'
