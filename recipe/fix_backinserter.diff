@@ -6,9 +6,9 @@ index c270405eb..75141da1f 100644
 +++ b/src/obmolecformat.cpp
 @@ -23,6 +23,7 @@ GNU General Public License for more details.
  #endif
-
+ 
  #include <algorithm>
 +#include <iterator>
-
+ 
  using namespace std;
  namespace OpenBabel
