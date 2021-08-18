@@ -1,0 +1,30 @@
+c_compiler:
+- vs2017
+cairo:
+- '1.16'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- vs2017
+libxml2:
+- '2.9'
+pin_run_as_build:
+  cairo:
+    max_pin: x.x
+  libxml2:
+    max_pin: x.x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+  zlib:
+    max_pin: x.x
+python:
+- 3.7.* *_73_pypy
+target_platform:
+- win-64
+vc:
+- '14'
+zlib:
+- '1.2'
