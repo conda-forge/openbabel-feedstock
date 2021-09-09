@@ -12,11 +12,16 @@ png_res = subprocess.run(["obabel", "-:c1ccccc1", "-opng"], capture_output=True)
 png_success = '1 molecule converted' in str(png_res.stderr)
 png_success = png_success and (png_res.stdout[:4] == b'\x89PNG')
 
+logp_res = subprocess.run(['obabel', '-:c1ccccc1', '-osmi', '-xt', '--append', 'logP'], capture_output=True, encoding='utf8')
+logp_success = 'Could not find contribution data file' not in logp_res.stderr
+
 if not mol2_success:
     print("Failed converting SMILES to mol2 format", file=stderr)
 if not inchi_success:
     print("Failed converting SMILES to InChI format", file=stderr)
 if not png_success:
     print("Failed converting SMILES to png format", file=stderr)
-if not(mol2_success and inchi_success and png_success):
+if not logp_success:
+    print("Failed to find data files", file=stderr)
+if not(mol2_success and inchi_success and png_success and logp_success):
     raise RuntimeError("Tests failed, see stderr")
