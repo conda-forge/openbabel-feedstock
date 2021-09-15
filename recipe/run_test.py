@@ -3,6 +3,7 @@ from sys import stderr
 
 mol2_res = subprocess.run(
     ["obabel", "-:c1ccccc1", "--gen3d", "-omol2"],
+    stdout=subprocess.PIPE,
     stderr=subprocess.PIPE,
     encoding="utf8",
 )
