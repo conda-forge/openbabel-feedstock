@@ -20,3 +20,14 @@ rmdir /s /q %LIBRARY_PREFIX%\bin\data
 
 xcopy %LIBRARY_PREFIX%\Lib\site-packages %PREFIX%\Lib /e /c
 rmdir /s /q %LIBRARY_PREFIX%\Lib\site-packages
+
+setlocal EnableDelayedExpansion
+
+:: Copy the [de]activate scripts to %PREFIX%\etc\conda\[de]activate.d.
+:: This will allow them to be run on environment activation.
+for %%F in (activate deactivate) DO (
+    if not exist %PREFIX%\etc\conda\%%F.d mkdir %PREFIX%\etc\conda\%%F.d
+    copy %RECIPE_DIR%\%%F-env_vars.bat %PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F-env_vars.bat
+)
+
+endlocal

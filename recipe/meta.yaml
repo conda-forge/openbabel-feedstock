@@ -16,7 +16,7 @@ source:
     - fix_backinserter.diff
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win and vc<14]
 
 requirements:
@@ -44,9 +44,6 @@ test:
     - openbabel.pybel
   commands:
     - obabel --help
-    - obabel -:c1ccccc1 --gen3d -omol2
-    - obabel -:c1ccccc1 --gen3d -oinchi
-    - obabel -:c1ccccc1 -opng -O img.png
 
 about:
   home: http://openbabel.org/
