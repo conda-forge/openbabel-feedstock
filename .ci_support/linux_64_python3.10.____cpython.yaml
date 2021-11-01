@@ -1,13 +1,21 @@
 c_compiler:
-- vs2017
+- gcc
+c_compiler_version:
+- '9'
 cairo:
 - '1.16'
+cdt_name:
+- cos6
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- gxx
+cxx_compiler_version:
+- '9'
+docker_image:
+- quay.io/condaforge/linux-anvil-comp7
 libxml2:
 - '2.9'
 pin_run_as_build:
@@ -21,10 +29,13 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 python:
-- 3.6.* *_cpython
+- 3.10.* *_cpython
 target_platform:
-- win-64
-vc:
-- '14'
+- linux-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
+- - cdt_name
+  - docker_image
 zlib:
 - '1.2'
