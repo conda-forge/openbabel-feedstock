@@ -8,6 +8,7 @@ mol2_res = subprocess.run(
     encoding="utf8",
 )
 mol2_success = "1 molecule converted" in mol2_res.stderr
+print("mol2", mol2_res.stderr)
 
 inchi_res = subprocess.run(
     ["obabel", "-:c1ccccc1", "-oinchi"],
@@ -17,12 +18,14 @@ inchi_res = subprocess.run(
 )
 inchi_success = "1 molecule converted" in inchi_res.stderr
 inchi_success = inchi_success and ("InChI=1S" in inchi_res.stdout)
+print("inchi", inchi_res.stderr)
 
 png_res = subprocess.run(
     ["obabel", "-:c1ccccc1", "-opng"], stdout=subprocess.PIPE, stderr=subprocess.PIPE
 )
 png_success = "1 molecule converted" in str(png_res.stderr)
 png_success = png_success and (png_res.stdout[:4] == b"\x89PNG")
+print("png", png_res.stderr)
 
 logp_res = subprocess.run(
     ["obabel", "-:c1ccccc1", "-osmi", "-xt", "--append", "logP"],
@@ -31,6 +34,7 @@ logp_res = subprocess.run(
     encoding="utf8",
 )
 logp_success = "Could not find contribution data file" not in logp_res.stderr
+print("logp", logp_res.stderr)
 
 if not mol2_success:
     print("Failed converting SMILES to mol2 format", file=stderr)
