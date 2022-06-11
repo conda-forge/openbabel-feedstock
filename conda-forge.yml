@@ -3,6 +3,7 @@ conda_forge_output_validation: true
 provider:
   win: azure
   linux_ppc64le: azure
+  linux-aarch64: azure
 test_on_native_only: true
 github:
   branch_name: main
