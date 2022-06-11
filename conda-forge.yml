@@ -8,3 +8,7 @@ test_on_native_only: true
 github:
   branch_name: main
   tooling_branch_name: main
+linux_aarch64:
+  enabled: true
+linux_ppc64le:
+  enabled: true
