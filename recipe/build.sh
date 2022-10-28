@@ -9,5 +9,5 @@ cmake ${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=$PREFIX \
       -DRUN_SWIG=ON \
       .
 
-make -j${CPU_COUNT}
+make #-j${CPU_COUNT}
 make install
