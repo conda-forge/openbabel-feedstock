@@ -3,7 +3,7 @@ c_compiler:
 c_compiler_version:
 - '10'
 cairo:
-- '1.16'
+- '1'
 cdt_name:
 - cos7
 channel_sources:
@@ -17,16 +17,10 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le
 libxml2:
-- '2.9'
+- '2.10'
 pin_run_as_build:
-  cairo:
-    max_pin: x.x
-  libxml2:
-    max_pin: x.x
   python:
     min_pin: x.x
-    max_pin: x.x
-  zlib:
     max_pin: x.x
 python:
 - 3.10.* *_cpython
