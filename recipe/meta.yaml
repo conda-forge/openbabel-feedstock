@@ -14,7 +14,7 @@ source:
     - fix_data_path.diff
     - fix_babel_test_paths.diff
     - fix_backinserter.diff
-    - time.patch
+    - time.patch  # [linux]
 
 build:
   number: 6
