@@ -61,6 +61,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - jan-janssen
     - njzjz
     - mcs07
     - mwojcikowski
