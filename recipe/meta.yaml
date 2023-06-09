@@ -14,9 +14,10 @@ source:
     - fix_data_path.diff
     - fix_babel_test_paths.diff
     - fix_backinserter.diff
+    - time.patch  # [linux]
 
 build:
-  number: 5
+  number: 6
   skip: true  # [win and vc<14]
 
 requirements:

@@ -1,0 +1,27 @@
+From 74873a998152ee8c415ff99a0c594c12582484e7 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Thu, 8 Jun 2023 12:41:10 -0600
+Subject: [PATCH] Update obutil.h
+
+---
+ include/openbabel/obutil.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/openbabel/obutil.h b/include/openbabel/obutil.h
+index cc65e40a1d..6179979647 100644
+--- a/include/openbabel/obutil.h
++++ b/include/openbabel/obutil.h
+@@ -25,11 +25,11 @@ GNU General Public License for more details.
+ #include <string>
+ #include <iosfwd>
+ 
+-#if TIME_WITH_SYS_TIME
++#ifdef TIME_WITH_SYS_TIME
+ #include <sys/time.h>
+ #include <time.h>
+ #else
+-#if HAVE_SYS_TIME_H
++#ifdef HAVE_SYS_TIME_H
+ #include <sys/time.h>
+ #else
+ #include <time.h>

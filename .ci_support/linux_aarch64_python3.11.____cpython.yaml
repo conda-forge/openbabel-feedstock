@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '10'
+- '12'
 cairo:
 - '1'
 cdt_arch:
@@ -17,11 +17,11 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '10'
+- '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64
 libxml2:
-- '2.10'
+- '2.11'
 pin_run_as_build:
   python:
     min_pin: x.x
