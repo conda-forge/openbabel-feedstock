@@ -29,6 +29,7 @@ requirements:
     - cmake
     - make  # [unix]
     - swig
+    - setuptools
   host:
     - python
     - zlib
