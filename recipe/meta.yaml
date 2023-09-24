@@ -29,10 +29,9 @@ requirements:
     - cmake
     - make  # [unix]
     - swig
-    - setuptools                              # [build_platform != target_platform]
   host:
     - python
-    - setuptools                              # [build_platform == target_platform]
+    - setuptools
     - zlib
     - eigen
     - libxml2
