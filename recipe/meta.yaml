@@ -17,7 +17,7 @@ source:
     - time.patch  # [linux]
 
 build:
-  number: 7
+  number: 8
   skip: true  # [win and vc<14]
 
 requirements:
@@ -31,6 +31,7 @@ requirements:
     - swig
   host:
     - python
+    - setuptools
     - zlib
     - eigen
     - libxml2
