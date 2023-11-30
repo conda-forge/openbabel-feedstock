@@ -3,13 +3,13 @@ c_compiler:
 cairo:
 - '1'
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2019
 libxml2:
-- '2.11'
+- '2.12'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -20,8 +20,5 @@ target_platform:
 - win-64
 vc:
 - '14'
-zip_keys:
-- - python
-  - channel_sources
 zlib:
 - '1.2'
