@@ -17,7 +17,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le
 libxml2:
-- '2.11'
+- '2.12'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -29,7 +29,5 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - python
-  - channel_sources
 zlib:
 - '1.2'
