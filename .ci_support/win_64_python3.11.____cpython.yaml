@@ -1,5 +1,9 @@
 c_compiler:
 - vs2019
+c_stdlib:
+- vs
+c_stdlib_version:
+- '2019'
 cairo:
 - '1'
 channel_sources:
@@ -9,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - vs2019
 libxml2:
-- '2.12'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
