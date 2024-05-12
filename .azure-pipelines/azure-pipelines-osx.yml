@@ -20,6 +20,9 @@ jobs:
       osx_64_python3.8.____cpython:
         CONFIG: osx_64_python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
+      osx_64_python3.9.____73_pypy:
+        CONFIG: osx_64_python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
       osx_64_python3.9.____cpython:
         CONFIG: osx_64_python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -39,6 +42,7 @@ jobs:
         CONFIG: osx_arm64_python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
+  variables: {}
 
   steps:
   # TODO: Fast finish on azure pipelines?
