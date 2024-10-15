@@ -5,7 +5,7 @@ c_stdlib:
 cairo:
 - '1'
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -22,8 +22,5 @@ target_platform:
 - win-64
 vc:
 - '14'
-zip_keys:
-- - python
-  - channel_sources
 zlib:
 - '1'
