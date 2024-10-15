@@ -20,6 +20,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '11'
+libboost_devel:
+- '1.84'
 libxml2:
 - '2'
 macos_machine:
