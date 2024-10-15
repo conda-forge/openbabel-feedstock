@@ -1,0 +1,86 @@
+From 305a6fd3183540e4a8ae1d79d10bf1860e6aa373 Mon Sep 17 00:00:00 2001
+From: Eisuke Kawashima <e-kwsm@users.noreply.github.com>
+Date: Wed, 27 Jul 2022 11:16:44 +0900
+Subject: [PATCH] refactor: always use `std::shared_ptr` (#2501)
+
+* refactor(cmake): remove `SHARED_POINTER` variable
+* refactor: remove `HAVE_SHARED_POINTER` macro
+* refactor: replace `OB_SHARED_PTR_HEADER` with `<memory>`
+* refactor: replace `OB_SHARED_PTR_IMPLEMENTATION` with `std::shared_ptr`
+* refactor: replace `obsharedptr` with `std::shared_ptr`
+* refactor: regenerate `scripts/R/examples/openbabelR/src/openbabel-R.cpp`
+* refactor: remove `include/openbabel/shared_ptr.h`
+---
+ CMakeLists.txt                                |  40 -----
+ doc/examples/obconformersearch_default.cpp    |   8 +-
+ doc/examples/obforcefield_energy.cpp          |   8 +-
+ include/openbabel/alias.h                     |   8 +-
+ include/openbabel/obmolecformat.h             |   4 -
+ include/openbabel/reaction.h                  |  32 ++--
+ include/openbabel/shared_ptr.h                |  31 ----
+ .../R/examples/openbabelR/src/openbabel-R.cpp | 163 +++++++++---------
+ src/alias.cpp                                 |   9 +-
+ src/config.h.cmake                            |   6 -
+ src/formats/chemkinformat.cpp                 |  26 +--
+ src/formats/formats.cmake                     |  23 +--
+ src/formats/rsmiformat.cpp                    |   6 +-
+ src/formats/xml/cmlformat.cpp                 |   8 +-
+ src/formats/xml/cmlreactformat.cpp            |  16 +-
+ src/obmolecformat.cpp                         |  11 +-
+ test/obtest.h                                 |   4 +-
+ tools/obrms.cpp                               |  10 +-
+ 18 files changed, 156 insertions(+), 257 deletions(-)
+ delete mode 100644 include/openbabel/shared_ptr.h
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6342e445e4..4e09a6a3d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -315,46 +315,6 @@ if(MINGW)
+   set (CMAKE_EXE_LINKER_FLAGS "-Wl,--enable-auto-import ${CMAKE_EXE_LINKER_FLAGS}")
+ endif()
+ 
+-message(STATUS "Checking available shared pointer...")
+-include(CheckCXXSourceCompiles)
+-check_cxx_source_compiles("#include <memory>
+-                           int main(){ std::shared_ptr<int> p; return 0; }"
+-                           HAVE_STD_SHARED_PTR)
+-check_cxx_source_compiles("#include <memory>
+-                           int main(){ std::tr1::shared_ptr<int> p; return 0; }"
+-                           HAVE_STD_TR1_SHARED_PTR)
+-check_cxx_source_compiles("#include <tr1/memory>
+-                           int main(){ std::tr1::shared_ptr<int> p; return 0; }"
+-                           HAVE_STD_TR1_SHARED_PTR_IN_TR1_HEADER)
+-if(HAVE_STD_SHARED_PTR)
+-  set(OB_SHARED_PTR_IMPLEMENTATION "std::shared_ptr")
+-  set(OB_SHARED_PTR_HEADER "memory")
+-  set(SHARED_POINTER true)
+-  add_definitions(-DHAVE_SHARED_POINTER)
+-elseif(HAVE_STD_TR1_SHARED_PTR)
+-  set(OB_SHARED_PTR_IMPLEMENTATION "std::tr1::shared_ptr")
+-  set(OB_SHARED_PTR_HEADER "memory")
+-  set(SHARED_POINTER true)
+-  add_definitions(-DHAVE_SHARED_POINTER)
+-elseif(HAVE_STD_TR1_SHARED_PTR_IN_TR1_HEADER)
+-  set(OB_SHARED_PTR_IMPLEMENTATION "std::tr1::shared_ptr")
+-  set(OB_SHARED_PTR_HEADER "tr1/memory")
+-  set(SHARED_POINTER true)
+-  add_definitions(-DHAVE_SHARED_POINTER)
+-else()
+-  find_package(Boost)
+-  if(Boost_FOUND)
+-    include_directories(${Boost_INCLUDE_DIRS} ${Boost_INCLUDE_DIR})
+-    add_definitions(-DUSE_BOOST -DHAVE_SHARED_POINTER)
+-    set(SHARED_POINTER true)
+-  else()
+-    message(FATAL_ERROR "Boost is required to compile OpenBabel with GCC 3.x")
+-  endif()
+-  set(OB_SHARED_PTR_IMPLEMENTATION "boost::shared_ptr")
+-  set(OB_SHARED_PTR_HEADER "boost/memory")
+-endif()
+-message(STATUS "Use ${OB_SHARED_PTR_IMPLEMENTATION} in ${OB_SHARED_PTR_HEADER}")
+-
+ find_package(Boost COMPONENTS program_options iostreams)
+   if(Boost_FOUND)
+     include_directories(${Boost_INCLUDE_DIRS} ${Boost_INCLUDE_DIR})
+
