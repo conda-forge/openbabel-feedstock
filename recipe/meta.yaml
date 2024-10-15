@@ -15,7 +15,6 @@ source:
     - fix_babel_test_paths.diff
     - fix_backinserter.diff
     - time.patch  # [linux]
-    - 2501.patch
 
 build:
   number: 10
