@@ -17,7 +17,7 @@ source:
     - time.patch  # [linux]
 
 build:
-  number: 9
+  number: 10
   skip: true  # [win and vc<14]
 
 requirements:
@@ -25,6 +25,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
     - make  # [unix]
@@ -37,6 +38,7 @@ requirements:
     - libxml2
     - cairo
     - rapidjson
+    - libboost-devel  # [osx]
   run:
     - python
 
