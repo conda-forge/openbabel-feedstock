@@ -39,6 +39,7 @@ requirements:
     - cairo
     - rapidjson
     - libcxx 16.*  # [osx]
+    - boost # [osx]
   run:
     - python
 
