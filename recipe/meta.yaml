@@ -38,7 +38,6 @@ requirements:
     - libxml2
     - cairo
     - rapidjson
-    - libcxx 16.*  # [osx]
     - libboost-python-devel  # [osx]
   run:
     - python
