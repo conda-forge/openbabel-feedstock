@@ -39,6 +39,8 @@ requirements:
     - cairo
     - rapidjson
     - libboost-python-devel  # [osx]
+    - libboost-devel  # [osx]
+    - libboost-headers  # [osx]
   run:
     - python
 
