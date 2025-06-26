@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '11'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -19,9 +19,15 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '11'
+libboost_devel:
+- '1.86'
+libboost_headers:
+- '1.86'
+libboost_python_devel:
+- '1.86'
 libxml2:
-- '2'
+- '2.13'
 macos_machine:
 - arm64-apple-darwin20.0.0
 pin_run_as_build:
