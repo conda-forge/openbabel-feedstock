@@ -22,8 +22,5 @@ target_platform:
 - win-64
 vc:
 - '14'
-zip_keys:
-- - python
-  - channel_sources
 zlib:
 - '1'
