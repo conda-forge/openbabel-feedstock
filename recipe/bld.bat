@@ -9,7 +9,6 @@ cmake ^
       -DRUN_SWIG=ON ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DWITH_MAEPARSER=OFF ^
-      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ^
       .
 if errorlevel 1 exit 1
 
