@@ -34,11 +34,15 @@ logp_success = "Could not find contribution data file" not in logp_res.stderr
 
 if not mol2_success:
     print("Failed converting SMILES to mol2 format", file=stderr)
+    print("stderr:", mol2_res.stderr, file=stderr)
 if not inchi_success:
     print("Failed converting SMILES to InChI format", file=stderr)
+    print("stderr:", inchi_res.stderr, file=stderr)
 if not png_success:
     print("Failed converting SMILES to png format", file=stderr)
+    print("stderr:", png_res.stderr, file=stderr)
 if not logp_success:
     print("Failed to find data files", file=stderr)
+    print("stderr:", logp_res.stderr, file=stderr)
 if not (mol2_success and inchi_success and png_success and logp_success):
     raise RuntimeError("Tests failed, see stderr")
