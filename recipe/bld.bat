@@ -28,6 +28,7 @@ setlocal EnableDelayedExpansion
 for %%F in (activate deactivate) DO (
     if not exist %PREFIX%\etc\conda\%%F.d mkdir %PREFIX%\etc\conda\%%F.d
     copy %RECIPE_DIR%\%%F-env_vars.bat %PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F-env_vars.bat
+    copy %RECIPE_DIR%\%%F-env_vars.ps1 %PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F-env_vars.ps1
 )
 
 endlocal
