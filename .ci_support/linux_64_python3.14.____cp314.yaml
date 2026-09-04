@@ -19,7 +19,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma10
 libxml2:
-- '2.14'
+- '2.15'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -31,5 +31,7 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - python
+  - channel_sources
 zlib:
 - '1'
