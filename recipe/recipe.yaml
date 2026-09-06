@@ -1,38 +1,46 @@
-{% set name = "openbabel" %}
-{% set version = "3.2.1" %}
-{% set sha256 = "e140c25480fe1678d00b9a52462368fa4e7805fba67b12ee496784437f3e239e" %}
+schema_version: 1
+
+context:
+  name: openbabel
+  version: "3.2.1"
+  sha256: e140c25480fe1678d00b9a52462368fa4e7805fba67b12ee496784437f3e239e
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://github.com/openbabel/openbabel/archive/openbabel-{{ version|replace('.','-') }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://github.com/openbabel/openbabel/archive/openbabel-${{ version|replace('.','-') }}.tar.gz
+  sha256: ${{ sha256 }}
   patches:
     - fix_library_path_search.diff
     - fix_data_path.diff
     - fix_babel_test_paths.diff
-    - time.patch  # [linux]
+    - if: linux
+      then: time.patch
     # openbabel 3.2.1's vendored InChI 1.07.5 references four AuxInfo API
     # functions from its Win32 DLL export shims but ships no implementation,
     # so inchi.dll fails to link on MSVC. Harmless elsewhere (the shim block is
     # #ifdef'd out), so only apply on Windows.
-    - fix_inchi_windows_link.diff  # [win]
+    - if: win
+      then: fix_inchi_windows_link.diff
 
 build:
-  number: 1
-  skip: true  # [win and vc<14]
+  number: 2
+  skip: win and vc<14
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - {{ compiler('c') }}
-    - {{ stdlib('c') }}
-    - {{ compiler('cxx') }}
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - ${{ compiler('cxx') }}
     - cmake
-    - make  # [unix]
+    - if: unix
+      then: make
     - swig
   host:
     - python
@@ -45,17 +53,17 @@ requirements:
   run:
     - python
 
-test:
-  imports:
-    - openbabel.openbabel
-    - openbabel.pybel
-  commands:
-    - obabel --help
+tests:
+  - python:
+      imports:
+        - openbabel.openbabel
+        - openbabel.pybel
+      pip_check: false
+  - script:
+      - obabel --help
 
 about:
-  home: http://openbabel.org/
   license: GPL-2.0-only
-  license_family: GPL
   license_file: COPYING
   summary: A chemical toolbox designed to speak the many languages of chemical data
   description: |
@@ -63,8 +71,9 @@ about:
     data. It's an open, collaborative project allowing anyone to search, convert,
     analyze, or store data from molecular modeling, chemistry, solid-state materials,
     biochemistry, or related areas.
-  doc_url: http://openbabel.org/
-  dev_url: https://github.com/openbabel/openbabel
+  homepage: http://openbabel.org/
+  repository: https://github.com/openbabel/openbabel
+  documentation: http://openbabel.org/
 
 extra:
   recipe-maintainers:
